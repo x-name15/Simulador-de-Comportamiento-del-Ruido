@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#app {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 1.8em;
+}
+
+#controls {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#freq-inputs, #amp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#freq-inputs input[type="number"], #amp-inputs input[type="number"] {
+  width: 100px;
+}
+
+#result {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#results-table th,
+#results-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+#results-table th {
+  background-color: #f0f0f0;
+}
+
+.explanation-panel {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.explanation-panel h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.explanation-panel ul {
+  padding-left: 20px;
+}
+
+.explanation-panel p {
+  line-height: 1.6;
+  font-size: 0.95em;
+}

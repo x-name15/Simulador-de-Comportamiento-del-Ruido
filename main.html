@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulador Acústico</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>Simulador de Comportamiento del Ruido</h1>
+
+    <div id="controls">
+      <label for="material">Material:</label>
+      <select id="material">
+        <option value="concreto">Concreto</option>
+        <option value="vidrio">Vidrio</option>
+        <option value="madera">Madera</option>
+        <option value="metal">Metal</option>
+        <option value="yeso">Yeso</option>
+        <option value="corcho">Corcho</option>
+      </select>
+
+      <label for="frequency">Frecuencia (Hz):</label>
+      <div id="freq-inputs">
+        <input type="range" id="frequency" min="20" max="20000" step="10" value="1000"/>
+        <input type="number" id="frequency-number" min="20" max="20000" step="10" value="1000"/>
+      </div>
+
+      <label for="amplitude">Amplitud:</label>
+      <div id="amp-inputs">
+        <input type="range" id="amplitude" min="0" max="100" step="1" value="30"/>
+        <input type="number" id="amplitude-number" min="0" max="100" step="1" value="30"/>
+      </div>
+
+      <label for="thickness">Grosor de la pared (cm):</label>
+      <input type="number" id="thickness" min="1" max="200" value="10" />
+
+      <button id="simulate">Simular</button>
+    </div>
+
+    <canvas id="graph"></canvas>
+
+    <div id="result">
+      <h3>Resultados:</h3>
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th>Frecuencia Después del Muro (Hz)</th>
+            <th>Amplitud Después del Muro</th>
+            <th>Nivel Sonoro Antes (dB aprox.)</th>
+            <th>Nivel Sonoro Después (dB aprox.)</th>
+            <th>Reducción Sonora (dB aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="freq-after">-</td>
+            <td id="amplitude-after">-</td>
+            <td id="db-before">-</td>
+            <td id="db-after">-</td>
+            <td id="db-reduction">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="explanation" class="explanation-panel">
+      <h3>Fundamentos científicos</h3>
+      <p>La atenuación del sonido a través de materiales depende de:</p>
+      <ul>
+        <li>Impedancia acústica del material</li>
+        <li>Porosidad y estructura interna</li>
+        <li>Frecuencia de la onda sonora</li>
+        <li>Densidad y rigidez del material</li>
+        <li>Grosor del material</li>
+      </ul>
+      <p>Fórmula utilizada en la simulación (simplificada): A = A₀·e<sup>(-α·g·k)</sup>...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
