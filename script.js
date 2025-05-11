@@ -231,12 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentAbsorption = getAbsorptionByFrequency(materialKey, currentFrequency);
       const explanationPanel = document.getElementById("explanation");
 
-      // Generar la tabla con los datos invertidos
+      // Generar la tabla con las columnas invertidas
       const absData = materialData[materialKey].absorption;
       let absorptionTableHtml = `<h4>Coeficientes de Absorción (α) para ${materialInfo.title}:</h4>
-                                 <table><tr><th>Frecuencia (Hz)</th><th>α</th></tr>`;
+                                 <table><tr><th>α</th><th>Frecuencia (Hz)</th></tr>`;
       for (const freq in absData) {
-          absorptionTableHtml += `<tr><td>${freq}</td><td>${absData[freq].toFixed(2)}</td></tr>`;
+          absorptionTableHtml += `<tr><td>${absData[freq].toFixed(2)}</td><td>${freq}</td></tr>`;
       }
       absorptionTableHtml += `</table><p>Para la frecuencia actual de ${currentFrequency.toFixed(0)} Hz, el coeficiente de absorción (α) interpolado es aprox. <strong>${currentAbsorption.toFixed(3)}</strong>.</p>`;
 

@@ -92,11 +92,38 @@ canvas {
   color: #333;
 }
 
-.explanation-panel ul {
+explanation-panel ul {
   padding-left: 20px;
 }
 
 .explanation-panel p {
   line-height: 1.6;
   font-size: 0.95em;
+}
+
+/* Estilo para la tabla de coeficientes de absorción */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px; /* Añadimos más espacio alrededor del texto */
+  text-align: center;
+  font-size: 0.9em;
+}
+
+table th {
+  background-color: #f0f0f0;
+}
+
+table td {
+  background-color: #fff;
+}
+
+table tr:nth-child(even) td {
+  background-color: #f9f9f9; /* Alternar colores para mayor legibilidad */
 }
