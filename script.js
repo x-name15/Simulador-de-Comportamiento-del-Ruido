@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
       madera: { 
           absorption: { 63: 0.15, 125: 0.12, 250: 0.10, 500: 0.09, 1000: 0.08, 2000: 0.07, 4000: 0.06 }, 
           density: 700 
-      }, // Pino, perpendicular a la fibra
+      },
       metal: { 
           absorption: { 63: 0.04, 125: 0.04, 250: 0.05, 500: 0.05, 1000: 0.05, 2000: 0.04, 4000: 0.03 }, 
           density: 7800 
-      }, // Acero
+      },
       yeso: { 
           absorption: { 63: 0.10, 125: 0.08, 250: 0.06, 500: 0.04, 1000: 0.03, 2000: 0.02, 4000: 0.02 }, 
           density: 900 
-      }, // Placa de yeso
+      },
       corcho: { 
           absorption: { 63: 0.05, 125: 0.10, 250: 0.25, 500: 0.50, 1000: 0.65, 2000: 0.70, 4000: 0.75 }, 
           density: 250 
@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (freq < bands[0]) return materialAbsData[bands[0]];
     for (let i = 0; i < bands.length - 1; i++) {
-        if (freq >= bands[i] && freq < bands[i+1]) {
+        if (freq >= bands[i] && freq < bands[i + 1]) {
             // Interpolar para mayor precisión
             const lowerBand = bands[i];
-            const upperBand = bands[i+1];
+            const upperBand = bands[i + 1];
             const lowerAbs = materialAbsData[lowerBand];
             const upperAbs = materialAbsData[upperBand];
             return lowerAbs + (upperAbs - lowerAbs) * (freq - lowerBand) / (upperBand - lowerBand);
@@ -231,14 +231,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentAbsorption = getAbsorptionByFrequency(materialKey, currentFrequency);
       const explanationPanel = document.getElementById("explanation");
 
+      // Generar la tabla con los datos invertidos
+      const absData = materialData[materialKey].absorption;
       let absorptionTableHtml = `<h4>Coeficientes de Absorción (α) para ${materialInfo.title}:</h4>
                                  <table><tr><th>Frecuencia (Hz)</th><th>α</th></tr>`;
-      const absData = materialData[materialKey].absorption;
-      for (const freqBand in absData) {
-          absorptionTableHtml += `<tr><td>${freqBand}</td><td>${absData[freqBand].toFixed(2)}</td></tr>`;
+      for (const freq in absData) {
+          absorptionTableHtml += `<tr><td>${freq}</td><td>${absData[freq].toFixed(2)}</td></tr>`;
       }
       absorptionTableHtml += `</table><p>Para la frecuencia actual de ${currentFrequency.toFixed(0)} Hz, el coeficiente de absorción (α) interpolado es aprox. <strong>${currentAbsorption.toFixed(3)}</strong>.</p>`;
 
+      // Actualizar el panel de explicación
       explanationPanel.innerHTML = `
           <h3>${materialInfo.title}</h3>
           <p><strong>Descripción:</strong> ${materialInfo.description}</p>
